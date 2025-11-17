@@ -7,10 +7,12 @@ import { Slider } from "@/components/ui/slider";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Play, RotateCcw, Download } from "lucide-react";
-import { DNALoader } from "@/components/DNALoader";
+import { LoadingSpinner } from "@/components/LoadingSpinner";
 import { SimulatorChart } from "@/components/SimulatorChart";
 import { AlgorithmLog } from "@/components/AlgorithmLog";
 import type { SimulatorParameters, Scenario, SimulationResult } from "@shared/schema";
+import cgmWomanImage from "@assets/generated_images/Professional_woman_with_CGM_235e32e9.png";
+import pumpImage from "@assets/generated_images/Insulin_pump_product_photo_a96244e2.png";
 
 export default function Simulator() {
   const [parameters, setParameters] = useState<SimulatorParameters>({
@@ -57,31 +59,49 @@ export default function Simulator() {
   };
 
   return (
-    <div className="min-h-screen py-24 px-6">
+    <div className="min-h-screen py-24 px-6 bg-background">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-12 text-center">
-          <h1 className="text-4xl md:text-5xl font-display font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            Insulin Simulator
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Visualize closed-loop insulin delivery with real-time parameter control
-          </p>
+        <div className="mb-12 grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h1 className="text-4xl md:text-5xl font-serif font-semibold mb-4 text-foreground">
+              Automated Insulin Delivery Simulator
+            </h1>
+            <p className="text-lg text-muted-foreground mb-6">
+              Explore how closed-loop systems adjust insulin based on glucose levels, meals, and activity
+            </p>
+            <div className="flex items-center gap-6 p-4 bg-muted/30 rounded-lg">
+              <img 
+                src={pumpImage} 
+                alt="Insulin pump device" 
+                className="w-20 h-20 object-contain"
+              />
+              <p className="text-sm text-muted-foreground">
+                See how continuous glucose monitoring and automated insulin delivery work together to maintain healthy glucose levels
+              </p>
+            </div>
+          </div>
+          <div className="relative rounded-xl overflow-hidden shadow-lg">
+            <img 
+              src={cgmWomanImage} 
+              alt="Person using continuous glucose monitoring" 
+              className="w-full h-auto"
+            />
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-5 gap-8">
           <div className="lg:col-span-2 space-y-6">
-            <Card className="border-border/40 bg-card/50 backdrop-blur-sm">
+            <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                  Simulator Parameters
+                <CardTitle className="text-lg font-semibold">
+                  Patient Parameters
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <Label className="text-sm">Weight (kg)</Label>
-                    <span className="text-sm font-mono text-primary font-semibold" data-testid="value-weight">{parameters.weight}</span>
+                    <Label className="text-sm font-medium">Weight (kg)</Label>
+                    <span className="text-sm font-mono text-foreground font-semibold tabular-nums" data-testid="value-weight">{parameters.weight}</span>
                   </div>
                   <Slider
                     value={[parameters.weight]}
@@ -95,8 +115,8 @@ export default function Simulator() {
 
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <Label className="text-sm">Carb Intake (g)</Label>
-                    <span className="text-sm font-mono text-accent font-semibold" data-testid="value-carb-intake">{parameters.carbIntake}</span>
+                    <Label className="text-sm font-medium">Meal Carbohydrates (g)</Label>
+                    <span className="text-sm font-mono text-foreground font-semibold tabular-nums" data-testid="value-carb-intake">{parameters.carbIntake}</span>
                   </div>
                   <Slider
                     value={[parameters.carbIntake]}
@@ -110,8 +130,8 @@ export default function Simulator() {
 
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <Label className="text-sm">Insulin Sensitivity (mg/dL per U)</Label>
-                    <span className="text-sm font-mono text-secondary font-semibold" data-testid="value-insulin-sensitivity">{parameters.insulinSensitivityFactor}</span>
+                    <Label className="text-sm font-medium">Insulin Sensitivity (mg/dL per U)</Label>
+                    <span className="text-sm font-mono text-foreground font-semibold tabular-nums" data-testid="value-insulin-sensitivity">{parameters.insulinSensitivityFactor}</span>
                   </div>
                   <Slider
                     value={[parameters.insulinSensitivityFactor]}
@@ -207,7 +227,7 @@ export default function Simulator() {
             {simulationMutation.isPending ? (
               <Card className="border-border/40 bg-card/50 backdrop-blur-sm">
                 <CardContent className="py-24">
-                  <DNALoader text="Running simulation..." />
+                  <LoadingSpinner text="Running simulation..." />
                 </CardContent>
               </Card>
             ) : simulationMutation.isError ? (
