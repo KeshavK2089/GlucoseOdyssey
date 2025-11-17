@@ -2,6 +2,7 @@ import { Link, useLocation } from "wouter";
 import { Activity, FlaskConical, BookOpen, Menu, X, Info } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import cgmLogo from "@assets/generated_images/Professional_CGM_sensor_logo_1540507f.png";
 
 export function Navigation() {
   const [location] = useLocation();
@@ -19,8 +20,8 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group" data-testid="link-home">
-            <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center" data-testid="logo-icon">
-              <Activity className="w-5 h-5 text-primary-foreground" />
+            <div className="w-9 h-9 rounded-lg overflow-hidden" data-testid="logo-icon">
+              <img src={cgmLogo} alt="CGM Logo" className="w-full h-full object-cover" />
             </div>
             <div>
               <h1 className="text-lg font-semibold text-foreground" data-testid="logo-text">

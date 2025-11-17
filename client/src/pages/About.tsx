@@ -142,8 +142,11 @@ export default function About() {
           </CardContent>
         </Card>
 
-        <div className="text-center text-sm text-muted-foreground pt-8 border-t border-border">
+        <div className="text-center text-sm text-muted-foreground pt-8 border-t border-border space-y-2">
           <p>Built to advance diabetes care education and technology understanding</p>
+          <p className="text-xs">
+            Made by <a href="https://github.com/KeshavK2089" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">Keshav Kotteswaran</a>
+          </p>
         </div>
       </div>
     </div>
