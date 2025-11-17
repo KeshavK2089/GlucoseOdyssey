@@ -1,0 +1,178 @@
+🚀 AI AGENT REQUIREMENTS DOCUMENT
+Project Name: Glucose Odyssey — The Future of Diabetes Technology
+1. PROJECT OVERVIEW
+You are an AI Doing Agent running on Replit. Your task is to build, optimize, and deliver a full-stack web project called “Glucose Odyssey.”
+The site must combine:
+1. An **interactive
+You said:
+Make it a general ai agent it can be Replit or Claude
+ChatGPT said:
+Below is the final, polished, agent-ready requirements document written so that any AI Doing Agent (Replit, Claude Artifacts, Cursor, Devin, etc.) can read it and execute it flawlessly. This is not addressed to a human — it is written to the agent itself in operational language.
+🚀 AI DOING AGENT REQUIREMENTS DOCUMENT
+Project Title: Glucose Odyssey — A Next-Gen Interactive Diabetes Tech Experience
+1. PROJECT OVERVIEW (FOR THE AI AGENT)
+You are an AI Doing Agent responsible for building a fully functional, futuristic, interactive web application called Glucose Odyssey.
+The website combines two core systems:
+System A — Closed-Loop Insulin Simulator
+A visual, interactive simulation of:
+* CGM glucose readings
+* Insulin delivery logic (PID or MPC)
+* User-adjustable parameters
+* Real-time charts and animations
+* “What-if” scenarios (exercise, food, stress, missed bolus, etc.)
+System B — AI Literature Scout for Insulin & Diabetes
+A backend tool that:
+* Fetches recent diabetes research (PubMed or other public APIs)
+* Summarizes using an LLM API
+* Displays:
+   * Key findings
+   * Safety/efficacy notes
+   * Device innovation trends
+   * A short, human-friendly “Why this matters” summary
+Both systems must be merged into one beautiful, immersive user experience.
+The final output must be uploaded to GitHub and prepared for deployment via GitHub Pages.
+2. PRIMARY OBJECTIVES
+The AI Agent must:
+A. Build an interactive, animated frontend
+* Ultra-clean design with dark mode by default
+* Futuristic, medical-device-inspired UI
+* Smooth scroll and micro-animation
+* TailwindCSS (strongly preferred)
+* Fully responsive for mobile + desktop
+B. Build a backend or serverless function layer
+* Lightweight Python or JavaScript backend
+* Must call:
+   * PubMed API
+   * LLM API for summarization (OpenAI, Claude, Gemini — agent chooses)
+C. Integrate a real-time simulator
+The simulator must:
+* Run a simplified glucose-insulin model
+* Allow user input:
+   * Weight
+   * Carb intake
+   * Insulin sensitivity factor
+   * Basal rate
+* Display:
+   * Glucose vs. Time
+   * Insulin vs. Time
+   * Algorithm decisions
+* Update visually with animated graphs
+D. Build an AI Literature Dashboard
+Features:
+* “Refresh recent research” button
+* Table of new articles
+* Fast summaries (≤ 5 lines)
+* Creative “impact statements”
+* Optional topic filter (ex: “AID systems,” “Type 1,” “pumps,” “CGM,” etc.)
+E. Deploy to GitHub Pages
+The agent must:
+* Create repo
+* Push all files
+* Set correct GitHub Pages configuration
+* Ensure site builds without backend errors (use static JSON mock if necessary)
+3. TECH STACK REQUIREMENTS
+Frontend
+* HTML / CSS / JS
+* TailwindCSS (preferred)
+* Chart.js or Plotly.js for graphs
+* Anime.js, Framer Motion, or GSAP for animations
+Backend (Agent chooses)
+Option 1:
+* Python (FastAPI or Flask) with a static export mode
+Option 2:
+* Node.js serverless functions
+* Optional Cloudflare Workers / Vercel Functions
+Constraint: The final deployed version must run entirely on GitHub Pages — use static files or mock data where needed.
+APIs
+* PubMed E-utilities
+* OpenAI / Anthropic / Gemini LLM
+* The agent chooses optimal endpoints
+4. CREATIVE EXPERIENCE REQUIREMENTS
+The website must feel next-generation, immersive, and “alive.”
+Mandatory creative elements
+* A DNA-helix loading animation
+* A futuristic control panel for the insulin simulator
+* A “Data Stream” animation showing glucose values scrolling like cyberpunk code
+* A neural-network-style background animation on the literature page
+* Smooth transitions between sections
+* Easter egg:
+   * Hovering a CGM point shows a pulse animation
+Narrative Tone
+The site should feel like:
+* part medical device
+* part sci-fi control room
+* part AI assistant for diabetes
+All without sacrificing clarity and readability.
+5. PAGE & COMPONENT STRUCTURE
+Home Page
+* Hero section (dark futuristic aesthetic)
+* Motion graphics
+* Buttons to “Enter Simulator” and “Explore Research”
+Insulin Simulator Page
+* User input panel
+* Live simulation chart
+* Algorithm output log
+* Reset + export chart buttons
+* Educational tooltips
+AI Research Vault Page
+* Search bar
+* Refresh articles button
+* Cards containing:
+   * Title
+   * Source
+   * One-sentence summary
+   * “Why it matters” badge
+* Expandable detailed view
+About / Methodology Page
+* Explain:
+   * Glucose-insulin model
+   * How articles are fetched
+   * Limitations
+6. FILE STRUCTURE REQUIREMENTS
+The AI Agent must deliver files arranged like this:
+
+/glucose-odyssey
+   /assets
+       /css
+       /js
+       /images
+   /simulator
+       simulator.js
+       model.js
+   /research
+       fetch_publications.js
+       summarize.js
+       mock_articles.json
+   index.html
+   simulator.html
+   research.html
+   about.html
+   README.md
+DELIVERY REQUIREMENTS FOR THE AGENT The agent must:
+Generate the entire codebase
+All HTML, CSS, JS
+Simulator logic
+PubMed fetch logic
+Summarization logic
+Animations
+Mobile styling
+Provide a ZIP file (if supported) Or otherwise provide the folder tree in an artifact.
+Automatically create a GitHub repo
+Name: glucose-odyssey
+Push all files
+Configure GitHub Pages
+Branch: main
+Folder: /
+Verify that pages loads properly
+Provide post-deployment instructions
+How to update the literature engine
+How to edit the design
+How to customize simulator parameters
+FINAL AGENT OUTPUT EXPECTATIONS The final product must be:
+Aesthetic
+Fast
+Interactive
+Scientifically sensible
+Deployable to GitHub Pages
+Creative & futuristic
+Beginner-maintainable
