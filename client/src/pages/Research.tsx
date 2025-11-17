@@ -28,10 +28,12 @@ export default function Research() {
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedArticle, setExpandedArticle] = useState<string | null>(null);
 
-  const { data: articles = [], isLoading, isError, refetch } = useQuery({
+  const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ['/api/research'],
     queryFn: fetchResearchArticles,
   });
+
+  const articles = Array.isArray(data) ? data : [];
 
   const toggleTopic = (topic: string) => {
     setSelectedTopics(prev =>
@@ -48,10 +50,10 @@ export default function Research() {
 
   const filteredArticles = articles.filter(article => {
     const matchesTopic = selectedTopics.length === 0 || 
-      selectedTopics.some(topic => article.topics.includes(topic));
+      selectedTopics.some(topic => article.topics?.includes(topic));
     const matchesSearch = searchQuery === "" || 
-      article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      article.abstract.toLowerCase().includes(searchQuery.toLowerCase());
+      article.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      article.abstract?.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesTopic && matchesSearch;
   });
 
