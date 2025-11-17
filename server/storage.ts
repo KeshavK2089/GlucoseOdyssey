@@ -1,37 +1,52 @@
-import { type User, type InsertUser } from "@shared/schema";
+import type { SimulationResult, ResearchArticle } from "@shared/schema";
 import { randomUUID } from "crypto";
 
-// modify the interface with any CRUD methods
-// you might need
-
 export interface IStorage {
-  getUser(id: string): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
+  saveSimulation(simulation: SimulationResult): Promise<SimulationResult>;
+  getSimulation(id: string): Promise<SimulationResult | undefined>;
+  getAllSimulations(): Promise<SimulationResult[]>;
+  cacheResearchArticles(articles: ResearchArticle[]): Promise<void>;
+  getCachedResearchArticles(): Promise<ResearchArticle[]>;
 }
 
 export class MemStorage implements IStorage {
-  private users: Map<string, User>;
+  private simulations: Map<string, SimulationResult>;
+  private researchCache: ResearchArticle[];
+  private cacheTimestamp: number;
 
   constructor() {
-    this.users = new Map();
+    this.simulations = new Map();
+    this.researchCache = [];
+    this.cacheTimestamp = 0;
   }
 
-  async getUser(id: string): Promise<User | undefined> {
-    return this.users.get(id);
+  async saveSimulation(simulation: SimulationResult): Promise<SimulationResult> {
+    this.simulations.set(simulation.id, simulation);
+    return simulation;
   }
 
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
+  async getSimulation(id: string): Promise<SimulationResult | undefined> {
+    return this.simulations.get(id);
   }
 
-  async createUser(insertUser: InsertUser): Promise<User> {
-    const id = randomUUID();
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
+  async getAllSimulations(): Promise<SimulationResult[]> {
+    return Array.from(this.simulations.values());
+  }
+
+  async cacheResearchArticles(articles: ResearchArticle[]): Promise<void> {
+    this.researchCache = articles;
+    this.cacheTimestamp = Date.now();
+  }
+
+  async getCachedResearchArticles(): Promise<ResearchArticle[]> {
+    const cacheAge = Date.now() - this.cacheTimestamp;
+    const maxAge = 1000 * 60 * 30;
+    
+    if (cacheAge > maxAge) {
+      return [];
+    }
+    
+    return this.researchCache;
   }
 }
 

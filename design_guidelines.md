@@ -1,180 +1,246 @@
-# Design Guidelines: Glucose Odyssey
+# Design Guidelines: Glucose Odyssey (Professional Edition)
 
 ## Design Approach
-**Reference-Based:** Inspired by futuristic medical interfaces (Apple Health + Tesla UI + Sci-fi HUDs). Dark mode-first aesthetic combining clinical precision with cyberpunk energy.
+**Human-Centered & Professional:** Inspired by leading diabetes technology companies (Insulet, Tandem, Medtronic). Clean, approachable design that puts people first—emphasizing empowerment, simplicity, and clinical trust.
 
 ## Core Design Principles
-1. **Futuristic Medical Precision**: Clean data visualization meets sci-fi control room
-2. **Luminous Depth**: Glowing accents, subtle gradients, layered transparency
-3. **Kinetic Intelligence**: Purposeful micro-animations that communicate system activity
-4. **Information Hierarchy**: Critical health data always prominent and clear
+1. **Clinical Trust**: Professional aesthetics that inspire confidence in healthcare technology
+2. **Human Connection**: Real people, real stories—not abstract visualizations
+3. **Clarity First**: Information hierarchy that prioritizes understanding over spectacle
+4. **Accessible Warmth**: Approachable colors and typography that reduce medical anxiety
+5. **Purposeful Simplicity**: Every element serves user needs, no decoration for decoration's sake
+
+---
+
+## Color Palette
+
+### Primary Colors
+- **Primary Purple**: `#5941A9` - Main brand color, trust and innovation
+- **Secondary Purple**: `#7F56D9` - Lighter accent for interactive elements
+- **Deep Navy**: `#2F3A60` - Professional depth, headers and text
+
+### Neutrals
+- **Background**: `#F7F7FB` (light mode), `#1A1A2E` (dark mode optional)
+- **Surface**: `#FFFFFF` (cards, panels)
+- **Border**: `#E5E5EA`
+- **Text Primary**: `#1A1A2E`
+- **Text Secondary**: `#6B6B80`
+- **Text Tertiary**: `#9999A8`
+
+### Functional Colors
+- **Success/Target**: `#10B981` - In-range glucose, positive outcomes
+- **Warning**: `#F59E0B` - Attention needed, moderate urgency
+- **Error/High**: `#EF4444` - Out of range, urgent attention
+- **Info Blue**: `#3B82F6` - Informational elements
 
 ---
 
 ## Typography
+
 **Font Families:**
-- Primary: 'Inter' (body, UI elements)
-- Display: 'JetBrains Mono' (data values, code-like elements)
-- Accent: 'Space Grotesk' (hero headlines)
+- **Primary**: Inter (UI, body text, data)
+- **Display**: Source Serif 4 (hero headlines, storytelling)
+- **Code/Data**: JetBrains Mono (only for algorithm logs, code snippets)
 
 **Hierarchy:**
-- Hero Headlines: 3xl-6xl, font-bold, Space Grotesk
-- Section Headers: 2xl-4xl, font-semibold, tracking-tight
-- Data Values: xl-3xl, JetBrains Mono, tabular-nums
-- Body Text: base-lg, leading-relaxed
-- Labels/Captions: sm-xs, uppercase tracking-wide for technical labels
+- **Hero Headlines**: 48px-72px, Source Serif 4, font-weight 600
+- **Section Headers**: 32px-48px, Inter, font-weight 700
+- **Subsections**: 24px-32px, Inter, font-weight 600
+- **Body Large**: 18px-20px, Inter, line-height 1.6
+- **Body**: 16px, Inter, line-height 1.5
+- **Small/Captions**: 14px, Inter, line-height 1.4
+- **Data Values**: 16px-24px, Inter, font-weight 600, tabular-nums
 
 ---
 
 ## Layout System
-**Spacing Primitives:** Tailwind units 2, 4, 6, 8, 12, 16, 24
-- Component padding: p-6, p-8
-- Section spacing: py-16, py-24
-- Card gaps: gap-6, gap-8
-- Element margins: mb-4, mb-6, mb-8
 
-**Grid System:**
-- Hero: Full-width with max-w-7xl container
-- Simulator: 2-column split (controls | visualization)
-- Research Cards: grid-cols-1 md:grid-cols-2 lg:grid-cols-3
-- About: Single column max-w-4xl for readability
+**Spacing Scale**: 4px base unit
+- xs: 4px
+- sm: 8px
+- md: 16px
+- lg: 24px
+- xl: 32px
+- 2xl: 48px
+- 3xl: 64px
+
+**Component Padding**: Consistent 24px (lg) for cards, 32px (xl) for sections
+
+**Grid**:
+- Max width: 1280px
+- Gutter: 24px
+- Hero: Full-width with contained content
+- Simulator: 40% controls | 60% visualization
+- Research: 3-column grid (desktop), stack on mobile
 
 ---
 
-## Component Library
+## Component Design
 
 ### Navigation
-- Fixed top nav with glass-morphism backdrop (backdrop-blur-lg)
-- Logo: Glowing glucose molecule icon
-- Nav items with subtle underline animation
-- Floating "Simulator" and "Research Vault" CTAs with glow effect
+- White background with subtle shadow
+- Primary purple logo accent
+- Clean horizontal menu (desktop), hamburger (mobile)
+- Sticky on scroll with fade-in effect
+- Simple active state: bold + purple underline
 
-### Hero Section (Home)
-- Full viewport height (min-h-screen)
-- Animated particle grid background (subtle dots/connections)
-- Center-aligned headline + subtext + dual CTA buttons
-- DNA helix animation orbiting the main headline
-- Gradient text treatment on "Glucose Odyssey"
+### Hero Section
+- Full-width lifestyle photography with dark overlay (opacity 30-40%)
+- Centered content with max-width constraint
+- Source Serif headline in white
+- Clear two-CTA pattern (primary + secondary outline)
+- Subtle fade-in animation on load
 
-### Insulin Simulator Interface
-**Control Panel (Left 40%):**
-- Card-based input groups with frosted glass effect
-- Slider inputs with glowing track indicators
-- Numerical readouts in monospace font
-- Collapsible parameter sections with smooth expand/collapse
-- "Run Simulation" button with pulsing ring animation
+### Cards
+- White background, subtle shadow: `0 1px 3px rgba(0,0,0,0.12)`
+- Border: 1px solid `#E5E5EA`
+- Border radius: 12px
+- Padding: 24px
+- Hover: lift slightly with shadow increase
 
-**Visualization Area (Right 60%):**
-- Real-time line chart (Chart.js) with glowing data points
-- Dual Y-axes: Glucose (mg/dL) + Insulin (units)
-- Time scrubber with playback controls
-- Legend with color-coded status indicators
-- CGM point hover reveals pulse animation (Easter egg)
-- Export chart button (icon-only, top-right)
+### Buttons
+**Primary (Purple):**
+- Background: `#5941A9`
+- Text: White
+- Padding: 12px 32px
+- Border radius: 8px
+- Hover: darken 10%
 
-**Data Stream Display:**
-- Scrolling terminal-style log below charts
-- Green monospace text on dark background
-- Timestamps + algorithm decision logs
-- Auto-scroll with pause on hover
+**Secondary (Outline):**
+- Border: 2px `#5941A9`
+- Text: `#5941A9`
+- Background: transparent
+- Hover: light purple background
 
-### AI Research Vault
-**Header:**
-- Search bar with glowing focus ring
-- Filter chips (AID Systems, CGM, Pumps, Type 1)
-- "Refresh Articles" button with rotating icon animation
+### Simulator Interface
+**Control Panel:**
+- Light cards with clear section headers
+- Sliders with discrete value labels
+- Progress indicators for target ranges
+- Clinical language: "Meal Announcement" not "Carb Intake"
+- Clean data display in tabular numbers
 
-**Article Cards:**
-- 3-column grid on desktop, stack on mobile
-- Each card: frosted glass background with subtle border glow
-- Title (font-semibold, mb-2)
-- Source badge (small pill, translucent)
-- One-sentence summary (text-sm, text-gray-300)
-- "Why it matters" badge (gradient accent, bottom)
-- Hover state: lift + intensify border glow
-- Click expands inline for full abstract
+**Visualization:**
+- Clean line charts with muted grid
+- Professional color coding (green=glucose, purple=insulin)
+- Clear axis labels and legends
+- Export button (subtle, top-right)
 
-**Neural Network Background:**
-- Animated SVG nodes and connecting lines
-- Slow, organic movement
-- Very subtle, low opacity (5-10%)
+### Research Cards
+- Two-column editorial layout
+- Source Serif headlines
+- Muted tag badges
+- Clear "Clinical Insight" callout boxes
+- Professional source attribution
 
-### Loading States
-- DNA double-helix spinner (center viewport)
-- Rotating base pairs with gradient colors
-- "Analyzing data..." text below
-
-### Buttons & CTAs
-**Primary (Simulator Entry):**
-- Large rounded-xl, px-8 py-4
-- Gradient background (cyan to blue)
-- Text: uppercase, tracking-wide, font-semibold
-- Glow effect on hover
-- Blurred background if over images
-
-**Secondary (Research Vault):**
-- Outlined style, border-2
-- Transparent bg with hover fill
-- Same size/padding as primary
-
-**Icon Buttons:**
-- Circular, fixed size (w-10 h-10)
-- Subtle hover rotate or scale
-
-### Data Visualization Elements
-- Charts use gradient fills below lines
-- Grid lines: very subtle, gray-800
-- Axis labels: text-xs, gray-400
-- Tooltips: dark bg, white text, shadow-xl
-- Color palette: Cyan (glucose), Purple (insulin), Amber (carbs)
-
-### Cards & Panels
-- Background: dark with 5% opacity overlay
-- Border: 1px, subtle glow (gray-700)
-- Rounded corners: rounded-xl
-- Padding: p-6 or p-8
-- Subtle inner shadow for depth
+### Data Visualization
+- Clean charts with minimal grid lines
+- Professional color palette (no neon)
+- Glucose: `#10B981` (green)
+- Insulin: `#7F56D9` (purple)
+- Background zones: very subtle fills
+- Clear labels in Inter font
 
 ---
 
-## Animations
-**Sparingly Used, High Impact:**
-- Page transitions: fade + slide (300ms ease-out)
-- Chart data: animate-in on load with stagger
-- DNA helix: continuous slow rotation
-- Data stream: scroll animation (CSS only)
-- Button hover: scale-105 + glow intensity
-- Card hover: translateY(-4px) + shadow increase
-- Loading spinner: smooth rotation
+## Photography & Imagery
 
-**No animations on:** Text, backgrounds, or layout shifts
+**Style Guide:**
+- Real people in authentic settings (not stock photo poses)
+- Diverse age, ethnicity, body types
+- Natural lighting, warm tones
+- Devices visible but not prominent
+- Empowering, positive emotions
+- Professional medical context without clinical coldness
 
----
-
-## Images
-**Hero Section:**
-- Conceptual image of futuristic CGM device or abstract glucose molecule visualization
-- Full-width, moderate height (60vh)
-- Dark overlay (opacity-50) to ensure text contrast
-- Buttons with backdrop-blur-md backgrounds
-
-**About/Methodology:**
-- Diagram illustrations of glucose-insulin feedback loop
-- Icon graphics for PubMed + LLM integration flow
-
-**Research Cards:**
-- Optional small thumbnail icons for article types (32x32px)
+**Image Treatments:**
+- Subtle overlays (dark 30-40% for text contrast)
+- No filters or heavy color grading
+- Consistent aspect ratios per section
+- Lazy loading for performance
 
 ---
 
-## Color Treatment Philosophy
-Layout, spacing, and hierarchy defined above. Visual styling (dark backgrounds, glowing accents, gradient overlays) applied during implementation to create the futuristic medical aesthetic while maintaining all structural specifications.
+## Animations & Motion
+
+**Philosophy**: Subtle and purposeful. Motion should guide attention, not demand it.
+
+**Approved Animations:**
+- Fade in on scroll: 200ms ease-out
+- Card hover lift: 150ms ease-out, translateY(-4px)
+- Button states: 150ms ease-out
+- Page transitions: 300ms fade
+- Loading: simple circular progress (no DNA helix)
+
+**Prohibited:**
+- Looping animations (glow, pulse, float)
+- Particle effects or grids
+- Rotating/spinning elements
+- Neon glow effects
+- Excessive transforms
+
+---
+
+## Content Tone & Voice
+
+### Messaging Principles
+- **Empowering not Fearful**: Focus on control and freedom
+- **Clear not Clinical**: Medical accuracy with plain language
+- **Inclusive not Exclusive**: Everyone's diabetes journey is valid
+- **Hopeful not Hype**: Realistic optimism about technology
+
+### Example Transformations
+- ❌ "Glucose Odyssey — The Future of Diabetes Technology"
+- ✅ "Glucose Odyssey — Understanding Diabetes Technology Together"
+
+- ❌ "AI-Powered Research Vault"
+- ✅ "Latest Diabetes Research Insights"
+
+- ❌ "Experience next-generation glucose control"
+- ✅ "Explore how automated insulin delivery works"
 
 ---
 
 ## Accessibility
-- All interactive elements: min-height 44px
-- Focus rings: 2px offset, cyan color
-- Chart data accessible via data tables (hidden, screen-reader only)
-- ARIA labels on all icon-only buttons
-- Color contrast: WCAG AA minimum on all text
+
+- **WCAG AA minimum** on all text (AAA preferred)
+- Focus indicators: 2px purple outline, 2px offset
+- Touch targets: minimum 44x44px
+- Screen reader labels on all interactive elements
+- Semantic HTML structure
+- Keyboard navigation support
+- Reduced motion respect
+
+---
+
+## Responsive Behavior
+
+**Breakpoints:**
+- Mobile: < 768px
+- Tablet: 768px - 1024px
+- Desktop: > 1024px
+
+**Mobile Adjustments:**
+- Stack all columns
+- Larger touch targets (48x48px minimum)
+- Simplified navigation (hamburger)
+- Hero text size reduction (scale down 30%)
+- Hide non-essential decorative elements
+
+---
+
+## Brand Personality
+
+**We are**: Trustworthy, Clear, Empowering, Inclusive, Professional
+**We are not**: Flashy, Complex, Intimidating, Exclusive, Gimmicky
+
+---
+
+## Implementation Notes
+
+- Use Inter for 95% of text
+- Source Serif only for hero headlines and storytelling sections
+- Photography should show diverse representation
+- Maintain consistent spacing (24px/32px)
+- Test in both light and dark modes
+- Ensure fast load times (< 3s)

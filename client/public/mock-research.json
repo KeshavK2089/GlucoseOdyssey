@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "title": "Hybrid Closed-Loop Systems Reduce HbA1c in Type 1 Diabetes: Meta-Analysis",
+    "authors": ["Smith J", "Johnson M", "Williams K"],
+    "source": "Diabetes Care",
+    "pubDate": "2024-11-10",
+    "abstract": "Background: Automated insulin delivery systems have shown promise in improving glycemic control. Methods: We conducted a systematic review and meta-analysis of 24 randomized controlled trials involving 2,847 participants. Results: Hybrid closed-loop systems reduced HbA1c by 0.45% compared to standard insulin therapy (p<0.001). Time in range increased by 12.3% (p<0.001) without increasing hypoglycemia risk. Conclusion: These findings support the efficacy and safety of automated insulin delivery.",
+    "summary": "Meta-analysis shows hybrid closed-loop insulin delivery reduces HbA1c by 0.45% and increases time-in-range by 12.3% without increasing hypoglycemia risk.",
+    "whyItMatters": "First comprehensive analysis demonstrating real-world efficacy of automated insulin delivery across diverse populations",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/",
+    "topics": ["AID Systems", "Type 1", "Clinical Trials"]
+  },
+  {
+    "id": "2",
+    "title": "Next-Generation CGM Sensors Achieve 99% Accuracy in Hypoglycemic Range",
+    "authors": ["Chen L", "Rodriguez A", "Patel S"],
+    "source": "Journal of Diabetes Science and Technology",
+    "pubDate": "2024-11-05",
+    "abstract": "Objective: To evaluate the accuracy of next-generation continuous glucose monitoring sensors in the hypoglycemic range (<70 mg/dL). Methods: 156 participants wore the new sensor for 14 days. Results: Mean absolute relative difference (MARD) was 6.2% overall and 7.1% in hypoglycemic range. 99.2% of readings in Clarke Error Grid Zone A. Conclusion: The new sensor provides highly accurate glucose readings across all ranges.",
+    "summary": "New CGM sensors demonstrate 99% accuracy in detecting low blood sugar with 6.2% overall error rate across 14-day wear period.",
+    "whyItMatters": "Breakthrough in hypoglycemia detection could prevent severe low blood sugar events in vulnerable populations",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/",
+    "topics": ["CGM", "Type 1"]
+  },
+  {
+    "id": "3",
+    "title": "AI-Powered Insulin Dosing Algorithm Outperforms Traditional PID Controllers",
+    "authors": ["Thompson R", "Lee H", "Garcia M"],
+    "source": "Nature Medicine",
+    "pubDate": "2024-10-28",
+    "abstract": "Background: Machine learning approaches may improve automated insulin delivery. Methods: We developed a reinforcement learning algorithm and compared it to standard PID control in a 12-week crossover trial with 92 participants. Results: The AI algorithm increased time-in-range from 68% to 81% (p<0.001) with 32% reduction in hypoglycemic events. The system adapted to individual meal patterns and exercise. Conclusion: AI-based dosing shows significant improvements over conventional algorithms.",
+    "summary": "Machine learning algorithm increases glucose time-in-range from 68% to 81% while reducing low blood sugar events by 32%.",
+    "whyItMatters": "Represents paradigm shift toward personalized, adaptive insulin therapy that learns individual patterns",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/",
+    "topics": ["AID Systems", "Clinical Trials"]
+  },
+  {
+    "id": "4",
+    "title": "Tubeless Insulin Pump Technology Shows High Satisfaction in Pediatric Users",
+    "authors": ["Anderson K", "Wright D", "Foster J"],
+    "source": "Diabetes Technology & Therapeutics",
+    "pubDate": "2024-10-20",
+    "abstract": "Purpose: To assess user satisfaction and glycemic outcomes with tubeless insulin pumps in children aged 7-17. Methods: 203 pediatric patients switched to tubeless pumps for 6 months. Results: User satisfaction scores improved from 6.8 to 8.9 (p<0.001). HbA1c decreased by 0.3%. 89% of parents reported reduced diabetes burden. Conclusion: Tubeless technology is well-accepted and effective in pediatric populations.",
+    "summary": "Tubeless insulin pumps increase user satisfaction scores from 6.8 to 8.9 while improving glucose control in children and teens.",
+    "whyItMatters": "Addresses major barrier to pump adoption in young people, potentially improving long-term diabetes management",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/",
+    "topics": ["Insulin Pumps", "Type 1"]
+  },
+  {
+    "id": "5",
+    "title": "Ultra-Fast Insulin Analog Reduces Post-Meal Glucose Spikes by 40%",
+    "authors": ["Kumar V", "Martinez C", "Zhao Y"],
+    "source": "The Lancet Diabetes & Endocrinology",
+    "pubDate": "2024-10-15",
+    "abstract": "Background: Post-prandial hyperglycemia remains challenging. Methods: Phase 3 trial of novel ultra-fast insulin analog vs standard rapid-acting insulin in 487 participants. Results: Peak glucose reduction of 41mg/dL at 1-hour post-meal (p<0.001). Onset of action: 8 minutes vs 15 minutes for standard insulin. No increase in hypoglycemia. Conclusion: Ultra-fast analog offers superior post-meal control.",
+    "summary": "New ultra-fast insulin starts working in 8 minutes and reduces post-meal glucose spikes by 40% compared to current rapid-acting formulations.",
+    "whyItMatters": "Game-changer for mealtime dosing, allowing more flexible eating patterns and better glucose control",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/",
+    "topics": ["Type 1", "Type 2", "Clinical Trials"]
+  }
+]
