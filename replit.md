@@ -15,17 +15,17 @@ Glucose Odyssey is a next-generation interactive diabetes technology platform co
   - About - Platform methodology and technology stack documentation
 
 - **Design System:**
-  - Futuristic dark-mode-first theme
-  - Cyan (primary) for glucose-related elements
-  - Purple (secondary) for insulin-related elements
-  - Amber (accent) for carbs and highlights
-  - Custom animations: DNA helix, pulse rings, glow effects, floating elements
+  - Professional medical aesthetic inspired by Insulet.com
+  - Light mode only with purple/navy color palette (#5941A9, #7F56D9, #2F3A60)
+  - Typography: Source Serif (headings) + Inter (body text)
+  - Clean, clinical design with subtle fade animations
+  - Professional medical photography and lifestyle imagery
 
 - **Key Components:**
-  - Navigation - Glassmorphism header with mobile support
-  - DNALoader - Custom DNA double-helix loading animation
-  - SimulatorChart - Canvas-based real-time glucose/insulin visualization
-  - AlgorithmLog - Terminal-style algorithm activity display
+  - Navigation - Clean header with mobile support
+  - LoadingSpinner - Professional loading indicator  
+  - SimulatorChart - Canvas-based glucose/insulin visualization with clinical colors
+  - AlgorithmLog - Professional algorithm activity log display
 
 ### Backend (Express + TypeScript)
 - API endpoints for simulator calculations
@@ -101,16 +101,18 @@ This simulator is designed for educational purposes and should never be used for
 - Always refer to original publications for complete information
 
 ## Recent Changes
-- **2024-11-17:** Initial implementation with complete MVP features
-  - All pages implemented with futuristic dark theme
-  - Custom Canvas-based chart visualization
-  - Full simulator with parameter controls
-  - Research vault with mock data and filtering
-  - GitHub Pages deployment configuration
+- **2024-11-17:** Professional redesign and critical bug fixes
+  - Transformed to Insulet-inspired professional medical design (purple/navy palette, Source Serif typography)
+  - Removed dark mode entirely - light mode only
+  - Fixed critical apiRequest bug: now returns parsed JSON instead of raw Response (was causing empty data {})
+  - Added robust empty/undefined data handling in AlgorithmLog and SimulatorChart
+  - Verified via e2e testing: Research displays 10 articles, Simulator shows chart + 11 algorithm logs
+  - All components follow professional medical aesthetic with subtle animations
 
 ## User Preferences
-- Dark mode by default (futuristic medical aesthetic)
-- Cyan/purple/amber color scheme for glucose/insulin/carbs
-- Space Grotesk for display headings
-- JetBrains Mono for data values and code
+- Light mode only - professional medical aesthetic
+- Purple/navy color scheme (#5941A9, #7F56D9, #2F3A60)
+- Source Serif for headings
 - Inter for body text
+- Clean, clinical design inspired by Insulet.com
+- Subtle fade animations (no futuristic effects)

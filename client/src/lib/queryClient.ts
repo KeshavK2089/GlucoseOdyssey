@@ -7,6 +7,29 @@ async function throwIfResNotOk(res: Response) {
   }
 }
 
+/**
+ * Makes an HTTP request and returns the parsed JSON response.
+ * 
+ * This function is designed for JSON API endpoints only. It automatically:
+ * - Sets Content-Type: application/json headers
+ * - Parses the response as JSON
+ * - Throws errors for non-2xx responses
+ * 
+ * @param method - HTTP method (GET, POST, PUT, DELETE, etc.)
+ * @param url - The API endpoint URL
+ * @param data - Optional request body (will be JSON.stringified)
+ * @returns Promise resolving to the parsed JSON response
+ * 
+ * @example
+ * // POST request with body
+ * const result = await apiRequest('POST', '/api/simulate', { parameters });
+ * 
+ * // GET request
+ * const articles = await apiRequest('GET', '/api/research');
+ * 
+ * Note: For binary responses (files, blobs) or streaming, implement a separate
+ * helper function (e.g., apiRequestRaw) that returns the Response object directly.
+ */
 export async function apiRequest<T = any>(
   method: string,
   url: string,
