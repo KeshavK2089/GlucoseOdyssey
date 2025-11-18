@@ -5,10 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Redirecting...</title>
   <script>
-    // Redirect to the base path for GitHub Pages SPA
+    // GitHub Pages SPA redirect for hash routing
     const basePath = '/GlucoseOdyssey/';
-    const path = window.location.pathname.replace(basePath, '');
-    window.location.replace(basePath + '#' + path);
+    const fullPath = window.location.pathname + window.location.search;
+    const relativePath = fullPath.replace(basePath, '');
+    
+    if (relativePath && relativePath !== '/') {
+      window.location.replace(basePath + '#' + relativePath);
+    } else {
+      window.location.replace(basePath);
+    }
   </script>
 </head>
 <body>
