@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useQuery, useMutation } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -13,6 +12,7 @@ import { AlgorithmLog } from "@/components/AlgorithmLog";
 import type { SimulatorParameters, Scenario, SimulationResult } from "@shared/schema";
 import cgmWomanImage from "@assets/generated_images/Professional_woman_with_CGM_235e32e9.png";
 import pumpImage from "@assets/generated_images/Insulin_pump_product_photo_a96244e2.png";
+import { runGlucoseInsulinSimulation } from "@/lib/simulator";
 
 export default function Simulator() {
   const [parameters, setParameters] = useState<SimulatorParameters>({
@@ -30,19 +30,26 @@ export default function Simulator() {
   });
 
   const [simulationResult, setSimulationResult] = useState<SimulationResult | null>(null);
-
-  const simulationMutation = useMutation({
-    mutationFn: async () => {
-      const { apiRequest } = await import("@/lib/queryClient");
-      return apiRequest('POST', '/api/simulate', { parameters, scenario });
-    },
-    onSuccess: (data) => {
-      setSimulationResult(data);
-    },
-  });
+  const [isRunning, setIsRunning] = useState(false);
 
   const runSimulation = () => {
-    simulationMutation.mutate();
+    setIsRunning(true);
+    
+    setTimeout(() => {
+      const { dataPoints, logs } = runGlucoseInsulinSimulation(parameters, scenario, 240);
+      
+      const result: SimulationResult = {
+        id: `sim-${Date.now()}`,
+        parameters,
+        scenario,
+        dataPoints,
+        algorithmLogs: logs,
+        createdAt: new Date().toISOString(),
+      };
+      
+      setSimulationResult(result);
+      setIsRunning(false);
+    }, 100);
   };
 
   const resetSimulation = () => {
@@ -224,27 +231,10 @@ export default function Simulator() {
           </div>
 
           <div className="lg:col-span-3 space-y-6">
-            {simulationMutation.isPending ? (
+            {isRunning ? (
               <Card className="border-border/40 bg-card/50 backdrop-blur-sm">
                 <CardContent className="py-24">
                   <LoadingSpinner text="Running simulation..." />
-                </CardContent>
-              </Card>
-            ) : simulationMutation.isError ? (
-              <Card className="border-border/40 bg-card/50 backdrop-blur-sm">
-                <CardContent className="py-24">
-                  <div className="text-center">
-                    <div className="w-24 h-24 mx-auto mb-6 rounded-full border-2 border-destructive/40 flex items-center justify-center">
-                      <Play className="w-10 h-10 text-destructive/60" />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-2 text-destructive">Simulation Error</h3>
-                    <p className="text-muted-foreground mb-6">
-                      {simulationMutation.error?.message || 'Failed to run simulation'}
-                    </p>
-                    <Button onClick={runSimulation} variant="outline" data-testid="button-retry">
-                      Try Again
-                    </Button>
-                  </div>
                 </CardContent>
               </Card>
             ) : simulationResult ? (
