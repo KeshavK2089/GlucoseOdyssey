@@ -1,11 +1,12 @@
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
+import { useHashLocation } from "wouter/use-hash-location";
 import { Activity, FlaskConical, BookOpen, Menu, X, Info } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import cgmLogo from "@assets/generated_images/Professional_CGM_sensor_logo_1540507f.png";
 
 export function Navigation() {
-  const [location] = useLocation();
+  const [location] = useHashLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
