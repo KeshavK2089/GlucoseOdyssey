@@ -101,6 +101,13 @@ This simulator is designed for educational purposes and should never be used for
 - Always refer to original publications for complete information
 
 ## Recent Changes
+- **2024-11-18:** GitHub Pages deployment optimization
+  - Converted simulator to run entirely client-side (works on static hosting)
+  - Added vite.config.github.ts with correct base path for GitHub Pages
+  - Simulator now runs in browser without backend API calls (405 errors fixed)
+  - Added fancy CGM logo and creator attribution to About page
+  - Ready for deployment at https://KeshavK2089.github.io/GlucoseOdyssey/
+
 - **2024-11-17:** Professional redesign and critical bug fixes
   - Transformed to Insulet-inspired professional medical design (purple/navy palette, Source Serif typography)
   - Removed dark mode entirely - light mode only
