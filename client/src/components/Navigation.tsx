@@ -1,12 +1,11 @@
-import { Link } from "wouter";
-import { useHashLocation } from "wouter/use-hash-location";
+import { Link, useLocation } from "wouter";
 import { Activity, FlaskConical, BookOpen, Menu, X, Info } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import cgmLogo from "@assets/generated_images/Professional_CGM_sensor_logo_1540507f.png";
 
 export function Navigation() {
-  const [location] = useHashLocation();
+  const [location, setLocation] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
@@ -16,16 +15,21 @@ export function Navigation() {
     { path: "/about", label: "About", icon: Info },
   ];
 
-  const handleLogoClick = (e: React.MouseEvent) => {
+  const handleHomeClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    window.location.hash = '/';
+    setLocation("/");
+    setMobileMenuOpen(false);
   };
 
   return (
     <nav className="sticky top-0 left-0 right-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm" data-testid="nav-main">
       <div className="max-w-7xl mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
-          <a href="#/" onClick={handleLogoClick} className="flex items-center gap-3 group" data-testid="link-home">
+          <button 
+            onClick={handleHomeClick}
+            className="flex items-center gap-3 group cursor-pointer hover-elevate active-elevate-2 rounded-lg px-2 py-1 -ml-2"
+            data-testid="link-home"
+          >
             <div className="w-9 h-9 rounded-lg overflow-hidden" data-testid="logo-icon">
               <img src={cgmLogo} alt="CGM Logo" className="w-full h-full object-cover" />
             </div>
@@ -34,7 +38,7 @@ export function Navigation() {
                 Glucose Odyssey
               </h1>
             </div>
-          </a>
+          </button>
 
           <div className="hidden md:flex items-center gap-2">
             {navItems.slice(1).map((item) => {
